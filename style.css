@@ -1,0 +1,38 @@
+.hero {
+  background: linear-gradient(to right, #4b6cb7, #182848);
+  height: 50vh;
+}
+
+/* search bar */
+.btn-orange {
+  background-color: #cd3301;
+  border: 1px solid #cd3301;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-orange:hover {
+  background-color: #cd3301;
+  border-color: #cd3301;
+}
+
+/* nav menu */
+.nav-link {
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  transform: scale(1.1);
+}
+
+.nav-link.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #000;
+}

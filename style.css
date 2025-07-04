@@ -36,3 +36,11 @@
   width: 100%;
   background-color: #000;
 }
+
+#about-img-1 img,
+#about-img-2 img {
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  outline: 2px solid black;
+}

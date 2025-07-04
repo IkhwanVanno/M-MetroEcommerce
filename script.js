@@ -22,20 +22,6 @@ $(document).ready(function () {
     },
   });
 
-  // Ambil produk untuk gallery dari dummyjson
-  $.ajax({
-    url: "https://dummyjson.com/products?limit=4",
-    method: "GET",
-    success: function (response) {
-      isiGallery(response.products);
-    },
-    error: function () {
-      $("#gallery-section").html(
-        "<p style='color:red;'>Gagal memuat produk.</p>"
-      );
-    },
-  });
-
   // Fungsi isi Carousel
   function isiCarousel(data) {
     let carouselInner = "";
@@ -65,21 +51,28 @@ $(document).ready(function () {
     $(".carousel-indicators").html(indicators);
   }
 
-  // Fungsi isi Gallery
-  function isiGallery(products) {
-    let html = "";
-    $.each(products, function (i, item) {
-      html += `
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="${item.thumbnail}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">${item.title}</h5>
-                        </div>
-                    </div>
-                </div>
-            `;
-    });
-    $("#gallery-section").html(html);
-  }
+  $.ajax({
+    url: "https://dummyjson.com/products",
+    method: "GET",
+    success: function (response) {
+      let products = response.products;
+
+      // Isi Judul dan Deskripsi About
+      $("#about-title").text(products[0].title);
+      $("#about-description").text(products[0].description);
+
+      // Gambar 1 (judul, deskripsi, gambar)
+      $("#about-img-1 img").attr("src", products[1].thumbnail);
+      $("#img-title-1").text(products[1].title);
+      $("#img-desc-1").text(products[1].description);
+
+      // Gambar 2 (judul, deskripsi, gambar)
+      $("#about-img-2 img").attr("src", products[2].thumbnail);
+      $("#img-title-2").text(products[2].title);
+      $("#img-desc-2").text(products[2].description);
+    },
+    error: function () {
+      alert("Gagal mengambil data dari API");
+    },
+  });
 });
